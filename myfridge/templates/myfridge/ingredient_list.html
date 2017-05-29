@@ -1,0 +1,7 @@
+{% if ingredients %}
+	{% for ingredient in ingredients %}
+		{{ ingredient }}
+	{% endfor %}
+{% else %}
+	<p>No ingredients in the system.</p>
+{% endif %}
