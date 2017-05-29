@@ -32,6 +32,22 @@ class Fridge(models.Model):
 	owner = models.CharField(max_length=100, default='')
 	ingredients = models.ManyToManyField(Ingredient,
 		through='FridgeContents')
+
+	def __str__(self):
+		if self.owner:
+			return "%s's fridge" % (self.owner)
+		else:
+			return "lost fridge"
+
+	def matching_recipes(self):
+		recipes = Recipe.objects.filter(
+			ingredients__in=self.ingredients.all())
+		matches = {}
+		for recipe in recipes:
+			matches[recipe] = matches.get(recipe, 0) + 1
+		return matches
+
+
 	
 class FridgeContents(models.Model):
 	ingredient = models.ForeignKey(Ingredient,
