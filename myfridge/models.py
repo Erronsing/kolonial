@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class Ingredient(models.Model):
-	name = models.CharField(max_length=50)
+	name = models.CharField(max_length=50, unique=True)
 
 	def __str__(self):
 		return self.name
@@ -10,7 +10,7 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
 	title = models.CharField(max_length=50)
 	description = models.CharField(max_length=250)
-	published_date = models.DateTimeField('date published')
+	published_date = models.DateTimeField(null=True)
 	ingredients = models.ManyToManyField(Ingredient, 
 		through='RecipeIngredient')
 
@@ -29,6 +29,7 @@ class RecipeIngredient(models.Model):
 	quantity = models.IntegerField()
 
 class Fridge(models.Model):
+	owner = models.CharField(max_length=100, default='')
 	ingredients = models.ManyToManyField(Ingredient,
 		through='FridgeContents')
 	
