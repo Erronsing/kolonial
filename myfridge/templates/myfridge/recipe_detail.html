@@ -5,7 +5,6 @@
 	{% for recipeingredient in recipe.recipeingredient_set.all %}
 		<dt>{{recipeingredient.ingredient.name}}</dt>
 		<dd>{{recipeingredient.quantity}}</dd>
-	</dl>
 	{% endfor %}
-	</ul>
+	</dl>
 {% endif %}
