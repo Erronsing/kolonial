@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.template import loader
 from django.urls import reverse
-from .models import Ingredient, Recipe, RecipeIngredient
+from .models import Ingredient, Recipe, Fridge 
 from .forms import IngredientForm
 
 class RecipeListView(generic.ListView):
@@ -36,3 +36,18 @@ def ingredient_new(request):
 	else:
 		form = IngredientForm
 	return render(request, 'myfridge/ingredient_edit.html', {'form': form})
+
+class FridgeListView(generic.ListView):
+	template_name = 'myfridge/fridge_list.html'
+	context_object_name = 'fridge_list'
+
+	def get_queryset(self):
+		return Fridge.objects
+
+class FridgeDetailView(generic.DetailView):
+	model = Fridge
+	template_name = 'myfridge/fridge_detail.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(FridgeDetailView, self).get_context_data(**kwargs)
+		return context

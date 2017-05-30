@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'myfridge/style.css' %}" />
+<h1>{{ fridge }}</h1>
+{% if fridge.ingredients.all %}
+	<dl>
+	{% for fridgecontent in fridge.fridgecontents_set.all %}
+		<dt>{{fridgecontent.ingredient.name}}</dt>
+		<dd>{{fridgecontent.quantity}}</dd>
+	{% endfor %}
+	</dl>
+{% endif %}

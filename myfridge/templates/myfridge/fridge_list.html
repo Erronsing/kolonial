@@ -1,0 +1,11 @@
+{% if fridge_list %}
+	<h1>Refrigerators</h1>
+	<ul>
+	{% for fridge in fridge_list.all %}
+		<li><a href="{% url 'myfridge:fridge-detail' fridge.id %}">
+		{{fridge}}<a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No fridges in the system.</p>
+{% endif %}
