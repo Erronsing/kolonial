@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^myfridge/', include('myfridge.urls')),
+    url(r'^$', include('myfridge.urls')),
 ]
