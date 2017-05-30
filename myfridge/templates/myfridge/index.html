@@ -1,0 +1,10 @@
+{% extends 'myfridge/base.html' %}
+
+{% block content %}
+	<h1>My Fridge App</h1>
+	<ul>
+		<li><a href="{% url 'myfridge:fridge-list' %}">Fridges</a></li>
+		<li><a href="{% url 'myfridge:recipe-list' %}">Recipes</a></li>
+		<li><a href="{% url 'myfridge:ingredient-list' %}">Ingredients</a></li>
+	</ul>
+{% endblock %}

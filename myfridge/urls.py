@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'myfridge'
 urlpatterns = [
+	url(r'^$', views.index, name='index'),
     url(r'^ingredients$', views.IngredientListView.as_view(), name='ingredient-list'),
     url(r'^ingredient/new/$', views.ingredient_new, name='ingredient-new'),
     url(r'^recipes$', views.RecipeListView.as_view(), name='recipe-list'),

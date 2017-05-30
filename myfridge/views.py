@@ -5,6 +5,9 @@ from django.urls import reverse
 from .models import Ingredient, Recipe, Fridge 
 from .forms import IngredientForm
 
+def index(request):
+	return render(request, 'myfridge/index.html', {})
+	
 class RecipeListView(generic.ListView):
 	template_name = 'myfridge/recipe_list.html'
 	context_object_name = 'recipe_list'
