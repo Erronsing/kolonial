@@ -14,6 +14,14 @@ class Recipe(models.Model):
 	ingredients = models.ManyToManyField(Ingredient, 
 		through='RecipeIngredient')
 
+	def ingredients_and_quantities(self):
+		ing_and_qt_map = {}
+		for ingredient in self.ingredients.all():
+			membership = RecipeIngredient.objects.get(
+				ingredient=ingredient, recipe=self)
+			ing_and_qt_map[ingredient] = membership.quantity
+		return ing_and_qt_map
+
 	def publish(self):
 		self.published_date = timezone.now()
 		self.save()
