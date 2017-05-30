@@ -1,3 +1,6 @@
-dt, dd { display: block; float: left; margin-top: 20px; }
+dt, dd { display: block; float: left; margin-top: 10px; }
 dt { clear: both; }
-dl { overflow: hidden;}
+dd { margin-left: 10px; }
+dl { overflow: hidden; }
+h1 { color: #FCA205; }
+body { padding-left: 15px; }

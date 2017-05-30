@@ -1,11 +1,20 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'myfridge/style.css' %}" />
-<h1>{{ fridge }}</h1>
-{% if fridge.ingredients.all %}
-	<dl>
-	{% for fridgecontent in fridge.fridgecontents_set.all %}
-		<dt>{{fridgecontent.ingredient.name}}</dt>
-		<dd>{{fridgecontent.quantity}}</dd>
-	{% endfor %}
-	</dl>
-{% endif %}
+<html>
+	<head>
+		<title>My Fridge</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'myfridge/style.css' %}" />
+	</head>
+	<body>
+		<h1>{{ fridge }}</h1>
+		{% if fridge.ingredients.all %}
+			<dl>
+			{% for fridgecontent in fridge.fridgecontents_set.all %}
+				<dt>{{fridgecontent.ingredient.name}}:</dt>
+				<dd>{{fridgecontent.quantity}}</dd>
+			{% endfor %}
+			</dl>
+		{% endif %}
+	</body>
+</html>

@@ -32,7 +32,7 @@ def ingredient_new(request):
 		form = IngredientForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return redirect('ingredient_list')
+			return redirect('myfridge:ingredient-list')
 	else:
 		form = IngredientForm
 	return render(request, 'myfridge/ingredient_edit.html', {'form': form})
