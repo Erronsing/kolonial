@@ -1,0 +1,14 @@
+{% extends 'myfridge/base.html' %}
+
+{% block content %}
+	<h1>{{ fridge }}</h1>
+	{% if fridge.matching_recipes %}
+		<dl>
+		{% for k, v in fridge.matching_recipes %}
+			<dt><a href="{% url 'myfridge:recipe-detail' k.id %}">{{k.title}}</a>:</dt>
+			<dd>{{v}}</dd>
+		{% endfor %}
+		</dl>
+	{% endif %}
+	<a href="{% url 'myfridge:fridge-detail' fridge.id %}"><span class="glyphicon glyphicon-chevron-left" /></a>
+{% endblock %}

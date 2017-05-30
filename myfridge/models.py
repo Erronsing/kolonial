@@ -45,7 +45,8 @@ class Fridge(models.Model):
 		matches = {}
 		for recipe in recipes:
 			matches[recipe] = matches.get(recipe, 0) + 1
-		return matches
+		sorted_matches = [(k, "{:.0%}".format(matches[k]/k.ingredients.count())) for k in sorted(matches, key=matches.get, reverse=True)]
+		return sorted_matches
 
 class FridgeContents(models.Model):
 	ingredient = models.ForeignKey(Ingredient,

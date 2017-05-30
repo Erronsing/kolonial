@@ -7,7 +7,7 @@ from .forms import IngredientForm
 
 def index(request):
 	return render(request, 'myfridge/index.html', {})
-	
+
 class RecipeListView(generic.ListView):
 	template_name = 'myfridge/recipe_list.html'
 	context_object_name = 'recipe_list'
@@ -54,3 +54,7 @@ class FridgeDetailView(generic.DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(FridgeDetailView, self).get_context_data(**kwargs)
 		return context
+
+class FridgeMatchView(generic.DetailView):
+	model = Fridge
+	template_name = 'myfridge/fridge_match.html'

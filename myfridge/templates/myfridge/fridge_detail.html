@@ -11,4 +11,5 @@
 		</dl>
 	{% endif %}
 	<a href="{% url 'myfridge:fridge-list' %}"><span class="glyphicon glyphicon-chevron-left" /></a>
+	<a href="{% url 'myfridge:fridge-match' fridge.id %}"><span class="glyphicon glyphicon-book" /></a>
 {% endblock %}

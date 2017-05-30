@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^fridges$', views.FridgeListView.as_view(), name='fridge-list'),
     url(r'^fridges/(?P<pk>[0-9]+)/$', views.FridgeDetailView.as_view(), 
     	name='fridge-detail'),
+    url(r'^fridges/(?P<pk>[0-9]+)/match/$', views.FridgeMatchView.as_view(), 
+    	name='fridge-match'),
 ]
