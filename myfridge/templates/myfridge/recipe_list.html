@@ -1,22 +1,15 @@
-{% load static %}
-<html>
-	<head>
-		<title>My Fridge</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="{% static 'myfridge/style.css' %}" />
-	</head>
-	<body>
-		{% if recipe_list %}
-			<h1>Recipes</h1>
-			<ul>
-			{% for recipe in recipe_list %}
-				<li><a href="{% url 'myfridge:recipe-detail' recipe.id %}">
-				{{recipe.title}}</a></li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<p>No recipes in the system.</p>
-		{% endif %}
-	</body>
-</html>
+{% extends 'myfridge/base.html' %}
+
+{% block content %}
+	{% if recipe_list %}
+		<h1>Recipes</h1>
+		<ul>
+		{% for recipe in recipe_list %}
+			<li><a href="{% url 'myfridge:recipe-detail' recipe.id %}">
+			{{recipe.title}}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No recipes in the system.</p>
+	{% endif %}
+{% endblock %}
