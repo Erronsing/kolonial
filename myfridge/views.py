@@ -20,11 +20,12 @@ class RecipeDetailView(generic.DetailView):
 		context = super(RecipeDetailView, self).get_context_data(**kwargs)
 		return context
 
-def ingredient_list(request):
-	ingredients = Ingredient.objects.order_by('name')
-	template = loader.get_template('myfridge/ingredient_list.html')
-	context = {'ingredients': ingredients}
-	return render(request, 'myfridge/ingredient_list.html', context)
+class IngredientListView(generic.ListView):
+	template_name = 'myfridge/ingredient_list.html'
+	context_object_name = 'ingredients'
+
+	def get_queryset(self):
+		return Ingredient.objects.order_by('name')
 
 def ingredient_new(request):
 	if request.method == "POST":
